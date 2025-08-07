@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Classroom</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+   <body class="dashboard-body"><div class="background-overlay"></div>
+
+  <div class="navbar">
+    <span id="welcome-text">Classroom Dashboard</span>
+    <button onclick="logout()">Logout</button>
+
+  </div>
+ <div class="dashboard">
+    <div class="card course-cse">
+      <h3>CSE-3532 Tools</h3>
+      <p>By Abir Bin Ayub Khan</p>
+    </div>
+
+    <div class="card course-dbms">
+       <h3>DBMS_5AM</h3>
+       <p>By Rayhanuzzaman</p>
+    </div>
+
+    <div class="card course-drawing">
+       <h3>Electrical Drive </h3>
+       <p>by Tawsif Ahmed</p>
+    </div>
+    <div class="card course-math">
+      <h3>MATH_2407_4AM</h3>
+      <p>By Prof. DMRK</p>
+    </div>
+
+  </div>
+
+  <script>
+  window.onload = function () {
+    const isLoggedIn = sessionStorage.getItem("loggedIn");
+    const username = sessionStorage.getItem("username");
+
+    if (isLoggedIn !== "true" || !username) {
+      window.location.href = "login.html";
+    }
+
+    // Show username
+    const welcomeText = document.getElementById("welcome-text");
+    welcomeText.textContent = `Welcome, ${username}!`;
+  };
+
+  function logout() {
+    sessionStorage.removeItem("loggedIn");
+    sessionStorage.removeItem("username");
+    window.location.href = "login.html";
+  }
+</script>
+
+</body>
+</html>
